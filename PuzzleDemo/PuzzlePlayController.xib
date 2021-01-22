@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PuzzlePlayController" customModule="PuzzleDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="vc9-AV-5ji" id="502-4s-Q3T"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSp-PB-ug9">
+                    <rect key="frame" x="87" y="44" width="240" height="250"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="InJ-Va-Esz">
+                            <rect key="frame" x="0.0" y="10" width="240" height="240"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="240" id="e4F-aV-ign"/>
+                                <constraint firstAttribute="height" constant="240" id="iFe-gH-cmh"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="InJ-Va-Esz" firstAttribute="leading" secondItem="dSp-PB-ug9" secondAttribute="leading" id="HAB-Gd-j9D"/>
+                        <constraint firstAttribute="bottom" secondItem="InJ-Va-Esz" secondAttribute="bottom" id="dH8-rz-cgF"/>
+                        <constraint firstItem="InJ-Va-Esz" firstAttribute="top" secondItem="dSp-PB-ug9" secondAttribute="top" constant="10" id="htT-EC-Pad"/>
+                        <constraint firstAttribute="trailing" secondItem="InJ-Va-Esz" secondAttribute="trailing" id="qfB-ev-Z04"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEx-9j-5FD">
+                    <rect key="frame" x="0.0" y="462" width="414" height="400"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-AV-5ji">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FuD-nu-13g">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.8691941352739726" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="vc9-AV-5ji" firstAttribute="leading" secondItem="TEx-9j-5FD" secondAttribute="leading" id="3CT-cT-IkZ"/>
+                        <constraint firstItem="vc9-AV-5ji" firstAttribute="top" secondItem="TEx-9j-5FD" secondAttribute="top" id="4VC-r1-KdY"/>
+                        <constraint firstAttribute="bottom" secondItem="vc9-AV-5ji" secondAttribute="bottom" id="QQL-te-apL"/>
+                        <constraint firstAttribute="trailing" secondItem="vc9-AV-5ji" secondAttribute="trailing" id="sn9-hn-1nt"/>
+                        <constraint firstAttribute="height" constant="400" id="u8h-Xz-b0m"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TEx-9j-5FD" secondAttribute="bottom" id="Qqe-Ua-NjU"/>
+                <constraint firstItem="TEx-9j-5FD" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VgJ-kN-MjE"/>
+                <constraint firstItem="dSp-PB-ug9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="b9U-of-HPy"/>
+                <constraint firstItem="TEx-9j-5FD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qeY-Ys-S5C"/>
+                <constraint firstItem="dSp-PB-ug9" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ziL-qb-uT5"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="73.660714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="test2" width="640" height="683"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

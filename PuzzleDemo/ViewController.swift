@@ -11,6 +11,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    var pieceImages: [UIImage] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +21,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func cutAction(_ sender: Any) {
-        let rowCount: Int = 8
+        let rowCount: Int = 3
         let canverWidth: CGFloat = imageView.frame.width / CGFloat(rowCount)
         
         var pieceStructor = PuzzlePieceAutomatic()
@@ -27,6 +30,8 @@ class ViewController: UIViewController {
         
         var generator = PuzzleGenerator(makeable: pieceStructor)
         let slicers = generator.makeable!.construct()
+        
+        pieceImages.removeAll()
         
         for (idx, item) in slicers.enumerated() {
             let row: Int = idx / rowCount
@@ -38,8 +43,11 @@ class ViewController: UIViewController {
                                                        height: canverWidth + item.holeRadius * 4))
                 .createPiece(slicer: item)
             
+            pieceImages.append(image!)
+            
+            
             let imageV = UIImageView(image: image)
-//            imageV.backgroundColor = .lightGray
+            imageV.backgroundColor = .lightGray
             imageV.contentMode = .scaleAspectFill
             view.addSubview(imageV)
             
@@ -48,12 +56,22 @@ class ViewController: UIViewController {
 //                                  width: imageView.frame.width / CGFloat(rowCount) + item.holeRadius * 2,
 //                                  height: imageView.frame.height / CGFloat(rowCount) + item.holeRadius * 2)
             
-            imageV.frame = CGRect(x: (canverWidth - item.holeRadius * 2) * CGFloat(column),
-                                  y: (canverWidth - item.holeRadius * 2) * CGFloat(row) + 500,
+            imageV.frame = CGRect(x: (canverWidth + item.holeRadius * 2) * CGFloat(column),
+                                  y: (canverWidth + item.holeRadius * 2) * CGFloat(row) + 500,
                                   width: imageView.frame.width / CGFloat(rowCount) + item.holeRadius * 2,
                                   height: imageView.frame.height / CGFloat(rowCount) + item.holeRadius * 2)
         }
     }
+    
+    @IBAction func playAction(_ sender: Any) {
+        let dest = PuzzlePlayController()
+        dest.pieceSize = pieceImages.first!.size
+        dest.originImage = imageView.image!
+        dest.pieceImages = pieceImages
+        
+        self.navigationController?.pushViewController(dest, animated: true)
+    }
+    
 }
 
 protocol PuzzleSlice {
@@ -72,151 +90,7 @@ struct PuzzleSliceTopLeft: PuzzleSlice {
     }
 }
 
-
-//struct PieceConfigure {
-//    static let holeRadius: CGFloat = 18.0
-//
-//
-//}
-
 extension UIImage {
-    
-//    func createMaskTop() -> UIImage? {
-//        // 扩展画布
-//        let width = self.size.width + PieceConfigure.holeRadius * 4
-//        let height = self.size.height + PieceConfigure.holeRadius * 4
-//        let startX = PieceConfigure.holeRadius * 2
-//        let startY = PieceConfigure.holeRadius * 2
-//
-//        let renderer = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
-//        let outImage = renderer.image { (ctx) in
-//            // 图片默认翻转，需要旋转一下
-//            ctx.cgContext.translateBy(x: 0, y: height)
-//            ctx.cgContext.scaleBy(x: 1, y: -1)
-//
-//            // 绘出 切图路径
-//            let path = UIBezierPath()
-//            path.move(to: CGPoint(x: 0, y: 0))
-//            path.addLine(to: CGPoint(x: width, y: 0))
-//            path.addLine(to: CGPoint(x: width, y: height))
-//            path.addLine(to: CGPoint(x: width / 2.0 + PieceConfigure.holeRadius, y: height))
-//            path.addArc(withCenter: CGPoint(x: width / 2, y: height - PieceConfigure.holeRadius * 3),
-//                        radius: PieceConfigure.holeRadius,
-//                        startAngle: CGFloat(0.0).toRadians(),
-//                        endAngle: CGFloat(180.0).toRadians(),
-//                        clockwise: false)
-//            path.addLine(to: CGPoint(x: width / 2.0 - PieceConfigure.holeRadius, y: height))
-//            path.addLine(to: CGPoint(x: 0, y: height))
-//
-//            path.close()
-//
-//            path.usesEvenOddFillRule = true
-//            path.addClip()
-//
-//            ctx.cgContext.draw(self.cgImage!, in: CGRect(x: startX,
-//                                                         y: startY,
-//                                                         width: self.size.width,
-//                                                         height: self.size.height))
-//        }
-//        return outImage
-//    }
-//
-//    func createMaskBottom() -> UIImage? {
-//        let renderer = UIGraphicsImageRenderer(size: CGSize(width: self.size.width, height: self.size.height))
-//        let outImage = renderer.image { (ctx) in
-//            ctx.cgContext.translateBy(x: 0, y: self.size.height)
-//            ctx.cgContext.scaleBy(x: 1, y: -1)
-//
-////            // 切出圆形
-////            let circlePath = UIBezierPath(ovalIn: CGRect(x: self.size.width - 50, y: self.size.height / 2 - 25, width: 50, height: 50))
-////            circlePath.usesEvenOddFillRule = true
-////            circlePath.addClip()
-//
-//            // 绘出 切图路径
-//            let path = UIBezierPath()
-//            path.move(to: CGPoint(x: 0.0, y: 0.0))
-//            path.addLine(to: CGPoint(x: self.size.width/2 - 20.0, y: 0.0))
-//            path.addArc(withCenter: CGPoint(x: self.size.width/2, y: 20.0),
-//                        radius: 20.0,
-//                        startAngle: CGFloat(180.0).toRadians(),
-//                        endAngle: CGFloat(0.0).toRadians(),
-//                        clockwise: false)
-//            path.addLine(to: CGPoint(x: self.size.width / 2 + 20, y: 0.0))
-//            path.addLine(to: CGPoint(x: self.size.width, y: 0.0))
-//            path.addLine(to: CGPoint(x: self.size.width, y: self.size.height))
-//            path.addLine(to: CGPoint(x: 0.0, y: self.size.height))
-//
-//            path.close()
-//
-//            path.usesEvenOddFillRule = true
-//            path.addClip()
-//
-//            ctx.cgContext.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
-//        }
-//        return outImage
-//    }
-//
-//    func createMaskRight() -> UIImage? {
-//        let renderer = UIGraphicsImageRenderer(size: CGSize(width: self.size.width, height: self.size.height))
-//        let outImage = renderer.image { (ctx) in
-//            ctx.cgContext.translateBy(x: 0, y: self.size.height)
-//            ctx.cgContext.scaleBy(x: 1, y: -1)
-//
-//            // 绘出 切图路径
-//            let path = UIBezierPath()
-//            path.move(to: CGPoint(x: 0.0, y: 0.0))
-//            path.addLine(to: CGPoint(x: self.size.width, y: 0.0))
-//            path.addLine(to: CGPoint(x: self.size.width, y: self.size.height / 2 - 20.0))
-//            path.addArc(withCenter: CGPoint(x: self.size.width - 20, y: self.size.height / 2),
-//                        radius: 20,
-//                        startAngle: CGFloat(270.0).toRadians(),
-//                        endAngle: CGFloat(90.0).toRadians(),
-//                        clockwise: false)
-//            path.addLine(to: CGPoint(x: self.size.width, y: self.size.height / 2 + 20))
-//            path.addLine(to: CGPoint(x: self.size.width, y: self.size.height))
-//            path.addLine(to: CGPoint(x: 0.0, y: self.size.height))
-//
-//            path.close()
-//
-//            path.usesEvenOddFillRule = true
-//            path.addClip()
-//
-//            ctx.cgContext.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
-//        }
-//        return outImage
-//    }
-//
-//    func createMaskLeft() -> UIImage? {
-//        let renderer = UIGraphicsImageRenderer(size: CGSize(width: self.size.width, height: self.size.height))
-//        let outImage = renderer.image { (ctx) in
-//            ctx.cgContext.translateBy(x: 0, y: self.size.height)
-//            ctx.cgContext.scaleBy(x: 1, y: -1)
-//
-//            // 绘出 切图路径
-//            let path = UIBezierPath()
-//            path.move(to: CGPoint(x: 0.0, y: 0.0))
-//            path.addLine(to: CGPoint(x: self.size.width, y: 0.0))
-//            path.addLine(to: CGPoint(x: self.size.width, y: self.size.height))
-//            path.addLine(to: CGPoint(x: 0.0, y: self.size.height))
-//            path.addLine(to: CGPoint(x: 0, y: self.size.height / 2 + 20))
-//            path.addArc(withCenter: CGPoint(x: 20, y: self.size.height / 2),
-//                        radius: 20,
-//                        startAngle: CGFloat(90.0).toRadians(),
-//                        endAngle: CGFloat(270.0).toRadians(),
-//                        clockwise: false)
-//            path.addLine(to: CGPoint(x: 0, y: self.size.height / 2 - 20))
-//            path.addLine(to: CGPoint(x: 0, y: 0))
-//
-//            path.close()
-//
-//            path.usesEvenOddFillRule = true
-//            path.addClip()
-//
-//            ctx.cgContext.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
-//        }
-//        return outImage
-//    }
-    
     
     func createPiece(slicer: PieceSlicer) -> UIImage? {
         // 扩展画布
@@ -232,7 +106,6 @@ extension UIImage {
             let width = self.size.width - slicer.holeRadius * 2
             let height = self.size.height - slicer.holeRadius * 2
             
-//            let slicer = PieceSlicer(left: .outside, top: .outside, right: .inner, bottom: .line)
             let path = slicer.draw(in: CGRect(x: startX, y: startY, width: width, height: height))
             path?.addClip()
             
@@ -307,13 +180,13 @@ struct PuzzlePieceAutomatic: PuzzleMakeable {
         return pieceWidth / 8.0
     }
     
-    
-    
+    // n x n 的方阵
     var map: [[PieceSlicer]] = []
     
     // 规则1：最外层的边都是平面
     // 规则2：没有约束的情况下随机凹凸
-    // 规则3：一个碎片凹或凸的边不能超过2个
+    // 规则3：一个碎片凹或凸的边不能超过3个
+    // 规则4：相邻碎片的凹凸需要契合
     mutating func construct() -> [PieceSlicer] {
         var pieceList: [PieceSlicer] = []
         
@@ -324,11 +197,8 @@ struct PuzzlePieceAutomatic: PuzzleMakeable {
                 var slicer = PieceSlicer(left: .none, top: .none, right: .none, bottom: .none)
                 slicer.holeRadius = raduis
                 var lineBox: [PieceSlicer.PathDrawType] = [.inner, .outside]
-//                    .reduce([]) {
-//                    (list, type) -> [PieceSlicer.PathDrawType] in
-//                    list + [type, type]
-//                }
                 
+                // 根据前置位 匹配凹凸类型
                 if j == 0 {
                     slicer.leftDraw = .line
                 } else {
@@ -337,9 +207,7 @@ struct PuzzlePieceAutomatic: PuzzleMakeable {
                     slicer.leftDraw = leftSilce.rightDraw.oppose
                 }
                 
-                if j == row - 1 {
-                    slicer.rightDraw = .line
-                }
+                if j == row - 1 { slicer.rightDraw = .line }
                 if i == 0 {
                     slicer.topDraw = .line
                 } else {
@@ -347,17 +215,10 @@ struct PuzzlePieceAutomatic: PuzzleMakeable {
                     slicer.topDraw = topSilce.bottomDraw.oppose
                 }
                 
-                if i == row - 1 {
-                    slicer.bottomDraw = .line
-                }
+                if i == row - 1 { slicer.bottomDraw = .line }
                 
-                // 根据前置位 匹配凹凸类型
-                if 1 == 0 {
-                     
-                } else {
-                    slicer.randomSetDirections(box: &lineBox)
-                }
-                
+                // 填充剩余边
+                slicer.randomSetDirections(box: &lineBox)
                 
                 print(slicer.description())
                 pieceList.append(slicer)
@@ -367,10 +228,6 @@ struct PuzzlePieceAutomatic: PuzzleMakeable {
         
         return pieceList
     }
-    
-    var martixNum: Int = 2 // n x n 的方阵
-    
-    var stateMap: [[PieceSlicer]] = []
 }
 
 
@@ -424,7 +281,6 @@ struct PieceSlicer {
     var holeRadius: CGFloat = 6.0
     
     mutating func randomSetDirections( box: inout [PieceSlicer.PathDrawType]) {
-//        var cpBox = box
         var list = [leftDraw, topDraw, rightDraw, bottomDraw]
         for i in 0..<list.count {
             let item = list[i]
@@ -461,7 +317,7 @@ struct PieceSlicer {
         let path = UIBezierPath()
         path.move(to: CGPoint(x: startX, y: startY))
         
-        // 上下颠倒
+        // 因为绘图区域上下颠倒，这里我们直接把上和下的配置交换赋值
         // top
         path.addLine(to: CGPoint(x: (width + startX) / 2  - holeRadius, y: startY))
         if bottomDraw == .outside {
