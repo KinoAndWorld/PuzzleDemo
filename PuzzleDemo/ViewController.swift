@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func cutAction(_ sender: Any) {
-        let rowCount: Int = 3
+        let rowCount: Int = 6
         let canverWidth: CGFloat = imageView.frame.width / CGFloat(rowCount)
         
         var pieceStructor = PuzzlePieceAutomatic()
@@ -68,6 +68,7 @@ class ViewController: UIViewController {
         dest.pieceSize = pieceImages.first!.size
         dest.originImage = imageView.image!
         dest.pieceImages = pieceImages
+        dest.rowCount = 6
         
         self.navigationController?.pushViewController(dest, animated: true)
     }
@@ -110,6 +111,8 @@ extension UIImage {
             path?.addClip()
             
             ctx.cgContext.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+            
+            ctx.cgContext.restoreGState()
         }
         return outImage
     }
@@ -176,9 +179,6 @@ struct PuzzlePieceAutomatic: PuzzleMakeable {
         }
     }
     var pieceWidth: CGFloat = 0
-    var pieceFillRadius: CGFloat {
-        return pieceWidth / 8.0
-    }
     
     // n x n 的方阵
     var map: [[PieceSlicer]] = []
@@ -190,7 +190,7 @@ struct PuzzlePieceAutomatic: PuzzleMakeable {
     mutating func construct() -> [PieceSlicer] {
         var pieceList: [PieceSlicer] = []
         
-        let raduis: CGFloat = pieceFillRadius
+        let raduis: CGFloat = PieceSlicer.radiusByWidth(pieceWidth)
         
         for i in 0..<row {
             for j in 0..<row {
@@ -273,12 +273,17 @@ struct PieceSlicer {
         case bottom
     }
     
+    
     var leftDraw: PathDrawType = .line
     var topDraw: PathDrawType = .line
     var rightDraw: PathDrawType = .line
     var bottomDraw: PathDrawType = .line
     
     var holeRadius: CGFloat = 6.0
+    
+    static func radiusByWidth(_ width: CGFloat) -> CGFloat {
+        return width / 8.0
+    }
     
     mutating func randomSetDirections( box: inout [PieceSlicer.PathDrawType]) {
         var list = [leftDraw, topDraw, rightDraw, bottomDraw]

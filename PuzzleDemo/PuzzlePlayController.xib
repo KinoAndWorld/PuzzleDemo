@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PuzzlePlayController" customModule="PuzzleDemo" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="vc9-AV-5ji" id="502-4s-Q3T"/>
+                <outlet property="puzzleContainerView" destination="dSp-PB-ug9" id="BLl-k8-WZq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSp-PB-ug9">
-                    <rect key="frame" x="87" y="44" width="240" height="250"/>
+                    <rect key="frame" x="57" y="44" width="300" height="300"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="InJ-Va-Esz">
-                            <rect key="frame" x="0.0" y="10" width="240" height="240"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="240" id="e4F-aV-ign"/>
-                                <constraint firstAttribute="height" constant="240" id="iFe-gH-cmh"/>
+                                <constraint firstAttribute="width" constant="300" id="e4F-aV-ign"/>
+                                <constraint firstAttribute="height" constant="300" id="iFe-gH-cmh"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -34,7 +35,7 @@
                     <constraints>
                         <constraint firstItem="InJ-Va-Esz" firstAttribute="leading" secondItem="dSp-PB-ug9" secondAttribute="leading" id="HAB-Gd-j9D"/>
                         <constraint firstAttribute="bottom" secondItem="InJ-Va-Esz" secondAttribute="bottom" id="dH8-rz-cgF"/>
-                        <constraint firstItem="InJ-Va-Esz" firstAttribute="top" secondItem="dSp-PB-ug9" secondAttribute="top" constant="10" id="htT-EC-Pad"/>
+                        <constraint firstItem="InJ-Va-Esz" firstAttribute="top" secondItem="dSp-PB-ug9" secondAttribute="top" id="htT-EC-Pad"/>
                         <constraint firstAttribute="trailing" secondItem="InJ-Va-Esz" secondAttribute="trailing" id="qfB-ev-Z04"/>
                     </constraints>
                 </view>
@@ -43,8 +44,8 @@
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-AV-5ji">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FuD-nu-13g">
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FuD-nu-13g">
                                 <size key="itemSize" width="128" height="128"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>

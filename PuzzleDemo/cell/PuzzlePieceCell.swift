@@ -13,7 +13,13 @@ class PuzzlePieceCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+//        let dragGesture = (target: self, action: #selector(dragAction))
+//
+//        self.addGestureRecognizer(dragGesture)
     }
-
+    
+    @objc func dragAction() {
+        
+    }
 }
