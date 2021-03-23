@@ -13,10 +13,13 @@
 		384F5E402592F7200001C770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384F5E3E2592F7200001C770 /* Main.storyboard */; };
 		384F5E422592F7220001C770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384F5E412592F7220001C770 /* Assets.xcassets */; };
 		384F5E452592F7220001C770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384F5E432592F7220001C770 /* LaunchScreen.storyboard */; };
+		386E92C925C10EC900854451 /* DragableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386E92C825C10EC900854451 /* DragableAdapter.swift */; };
 		38939FAF25BABCF2002D9E42 /* PuzzlePlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38939FAD25BABCF2002D9E42 /* PuzzlePlayController.swift */; };
 		38939FB025BABCF2002D9E42 /* PuzzlePlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38939FAE25BABCF2002D9E42 /* PuzzlePlayController.xib */; };
 		38939FB525BABF2C002D9E42 /* PuzzlePieceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38939FB325BABF2C002D9E42 /* PuzzlePieceCell.swift */; };
 		38939FB625BABF2C002D9E42 /* PuzzlePieceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38939FB425BABF2C002D9E42 /* PuzzlePieceCell.xib */; };
+		38C31A072609C2F500135C7A /* PieceSlicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C31A062609C2F500135C7A /* PieceSlicer.swift */; };
+		38C31A0B2609C31E00135C7A /* PuzzlePieceAutomatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C31A0A2609C31E00135C7A /* PuzzlePieceAutomatic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +31,13 @@
 		384F5E412592F7220001C770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		384F5E442592F7220001C770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		384F5E462592F7220001C770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		386E92C825C10EC900854451 /* DragableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableAdapter.swift; sourceTree = "<group>"; };
 		38939FAD25BABCF2002D9E42 /* PuzzlePlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePlayController.swift; sourceTree = "<group>"; };
 		38939FAE25BABCF2002D9E42 /* PuzzlePlayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PuzzlePlayController.xib; sourceTree = "<group>"; };
 		38939FB325BABF2C002D9E42 /* PuzzlePieceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePieceCell.swift; sourceTree = "<group>"; };
 		38939FB425BABF2C002D9E42 /* PuzzlePieceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PuzzlePieceCell.xib; sourceTree = "<group>"; };
+		38C31A062609C2F500135C7A /* PieceSlicer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceSlicer.swift; sourceTree = "<group>"; };
+		38C31A0A2609C31E00135C7A /* PuzzlePieceAutomatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePieceAutomatic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +70,14 @@
 		384F5E372592F7200001C770 /* PuzzleDemo */ = {
 			isa = PBXGroup;
 			children = (
+				38C31A052609C2D500135C7A /* Puzzle */,
 				38939FB225BABEB5002D9E42 /* cell */,
 				384F5E382592F7200001C770 /* AppDelegate.swift */,
 				384F5E3A2592F7200001C770 /* SceneDelegate.swift */,
 				384F5E3C2592F7200001C770 /* ViewController.swift */,
 				38939FAD25BABCF2002D9E42 /* PuzzlePlayController.swift */,
 				38939FAE25BABCF2002D9E42 /* PuzzlePlayController.xib */,
+				386E92C825C10EC900854451 /* DragableAdapter.swift */,
 				384F5E3E2592F7200001C770 /* Main.storyboard */,
 				384F5E412592F7220001C770 /* Assets.xcassets */,
 				384F5E432592F7220001C770 /* LaunchScreen.storyboard */,
@@ -85,6 +93,15 @@
 				38939FB425BABF2C002D9E42 /* PuzzlePieceCell.xib */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		38C31A052609C2D500135C7A /* Puzzle */ = {
+			isa = PBXGroup;
+			children = (
+				38C31A062609C2F500135C7A /* PieceSlicer.swift */,
+				38C31A0A2609C31E00135C7A /* PuzzlePieceAutomatic.swift */,
+			);
+			path = Puzzle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,8 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C31A072609C2F500135C7A /* PieceSlicer.swift in Sources */,
 				384F5E3D2592F7200001C770 /* ViewController.swift in Sources */,
+				386E92C925C10EC900854451 /* DragableAdapter.swift in Sources */,
 				38939FAF25BABCF2002D9E42 /* PuzzlePlayController.swift in Sources */,
+				38C31A0B2609C31E00135C7A /* PuzzlePieceAutomatic.swift in Sources */,
 				384F5E392592F7200001C770 /* AppDelegate.swift in Sources */,
 				38939FB525BABF2C002D9E42 /* PuzzlePieceCell.swift in Sources */,
 				384F5E3B2592F7200001C770 /* SceneDelegate.swift in Sources */,

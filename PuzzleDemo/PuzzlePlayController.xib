@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,7 +40,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEx-9j-5FD">
-                    <rect key="frame" x="0.0" y="462" width="414" height="400"/>
+                    <rect key="frame" x="0.0" y="496" width="414" height="400"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-AV-5ji">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
@@ -66,9 +66,9 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TEx-9j-5FD" secondAttribute="bottom" id="Qqe-Ua-NjU"/>
                 <constraint firstItem="TEx-9j-5FD" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VgJ-kN-MjE"/>
                 <constraint firstItem="dSp-PB-ug9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="b9U-of-HPy"/>
+                <constraint firstAttribute="bottom" secondItem="TEx-9j-5FD" secondAttribute="bottom" id="ocr-At-z1l"/>
                 <constraint firstItem="TEx-9j-5FD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qeY-Ys-S5C"/>
                 <constraint firstItem="dSp-PB-ug9" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ziL-qb-uT5"/>
             </constraints>
