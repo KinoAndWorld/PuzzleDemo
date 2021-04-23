@@ -12,8 +12,8 @@ class PieceDragableAdapter: NSObject {
     var bindImage = UIImage()
     var bindPt: CGPoint = .zero
     
+    // 判断格子是否还可以拖动
     var isVaild: Bool = true
-    
     
     init(view: UIView, image: UIImage, loc: CGPoint) {
         super.init()
@@ -55,20 +55,4 @@ extension PieceDragableAdapter: UIDragInteractionDelegate {
     func dragInteraction(_ interaction: UIDragInteraction, session: UIDragSession, willEndWith operation: UIDropOperation) {
         
     }
-    
-//    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
-//
-//        guard let imageView = bindView as? UIImageView else {
-//            return nil
-//        }
-//
-//        let center = CGPoint(x: imageView.bounds.midX, y: imageView.bounds.midY)
-//        let target = UIDragPreviewTarget(container: imageView, center: center)
-//
-//        let previewParameters = UIDragPreviewParameters()
-//        previewParameters.backgroundColor = UIColor.clear // transparent background
-//        return UITargetedDragPreview(view: imageView,
-//                                     parameters: previewParameters,
-//                                     target: target)
-//    }
 }

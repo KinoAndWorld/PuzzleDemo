@@ -19,7 +19,6 @@ class PuzzlePlayController: UIViewController {
     var rowCount: Int = 0
     var pieceSize: CGSize = .zero
     
-    
     private var pieceDatas: [PieceDataModel] = []
     
     //
@@ -35,7 +34,6 @@ class PuzzlePlayController: UIViewController {
     // 拼图摆放记录 n*n
     private var completeStates: [[Int]] = []
     
-    
     @IBOutlet weak var puzzleContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -45,7 +43,6 @@ class PuzzlePlayController: UIViewController {
         commonInit()
         setupPuzzleRect()
     }
-    
     
     private func commonInit() {
         collectionView.register(UINib(nibName: "PuzzlePieceCell", bundle: nil),
@@ -76,7 +73,6 @@ class PuzzlePlayController: UIViewController {
         
         return layout;
     }
-
     
     private func setupPuzzleRect() {
         let pieceSize: CGFloat = 300.0 / CGFloat(rowCount)
@@ -155,11 +151,9 @@ class PuzzlePlayController: UIViewController {
 }
 
 extension PuzzlePlayController: UIDropInteractionDelegate {
-    
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
         return true
     }
-    
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         let pt = session.location(in: self.view)
